@@ -1,0 +1,398 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Калькулятор Глубины Резкоcти</title>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<style>BODY {
+	BACKGROUND: #555
+}
+DIV.main {
+	BORDER-RIGHT: #444 2px solid; BORDER-TOP: #444 2px solid; MARGIN: 20px 50px 50px 20px; BORDER-LEFT: #444 2px solid; BORDER-BOTTOM: #444 2px solid
+}
+DIV.main DIV.title {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; FONT-SIZE: 22px; BACKGROUND: #4186cb; PADDING-BOTTOM: 10px; COLOR: white; PADDING-TOP: 10px; FONT-FAMILY: 'arial black'
+}
+DIV.main DIV.content {
+	PADDING-RIGHT: 15px; PADDING-LEFT: 15px; FONT-SIZE: 12pt; BACKGROUND: white; PADDING-BOTTOM: 15px; COLOR: black; PADDING-TOP: 15px; FONT-FAMILY: verdana
+}
+TABLE.control {
+
+}
+TABLE.control TD {
+	PADDING-RIGHT: 15px; PADDING-LEFT: 15px; FONT-WEIGHT: bold; FONT-SIZE: 10pt; BACKGROUND: #4186cb; PADDING-BOTTOM: 5px; COLOR: white; PADDING-TOP: 5px
+}
+TABLE.control TD A {
+	BORDER-RIGHT: 1px; PADDING-RIGHT: 3px; BORDER-TOP: 1px; PADDING-LEFT: 3px; FONT-WEIGHT: 700; FONT-SIZE: 10pt; BACKGROUND: #4186cb; PADDING-BOTTOM: 0px; BORDER-LEFT: 1px; COLOR: white; PADDING-TOP: 0px; BORDER-BOTTOM: 1px
+}
+TABLE.control TD A:hover {
+	BORDER-RIGHT: white 1px solid; BORDER-TOP: white 1px solid; BORDER-LEFT: white 1px solid; BORDER-BOTTOM: white 1px solid; TEXT-DECORATION: none
+}
+TABLE.control INPUT.focus {
+	BORDER-RIGHT: medium none; PADDING-RIGHT: 3px; BORDER-TOP: medium none; PADDING-LEFT: 3px; FONT-WEIGHT: bold; FONT-SIZE: 10pt; BACKGROUND: white; PADDING-BOTTOM: 0px; BORDER-LEFT: medium none; COLOR: black; PADDING-TOP: 0px; BORDER-BOTTOM: medium none; FONT-FAMILY: verdana; TEXT-ALIGN: center
+}
+TABLE.control SELECT {
+	BORDER-RIGHT: medium none; BORDER-TOP: medium none; FONT-WEIGHT: bold; FONT-SIZE: 10pt; BACKGROUND: white; BORDER-LEFT: medium none; COLOR: black; BORDER-BOTTOM: medium none; FONT-FAMILY: verdana
+}
+TABLE.appertures TD {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; FONT-SIZE: 10px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px
+}
+#table {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; FONT-SIZE: 10pt; BACKGROUND: white; PADDING-BOTTOM: 5px; COLOR: black; PADDING-TOP: 5px; FONT-FAMILY: verdana
+}
+TD.type1 {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 3px; BACKGROUND: #d8d8d8; BORDER-BOTTOM: gray 1px solid
+}
+TD.type2 {
+	BORDER-RIGHT: gray 1px solid; PADDING-RIGHT: 3px; PADDING-LEFT: 3px; BACKGROUND: #d8d8d8; BORDER-BOTTOM: gray 1px solid
+}
+TD.type3 {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 3px; BACKGROUND: #e8e8e8; BORDER-BOTTOM: gray 1px solid
+}
+TD.type4 {
+	BORDER-RIGHT: gray 1px solid; PADDING-RIGHT: 3px; PADDING-LEFT: 3px; BACKGROUND: #e8e8e8; BORDER-BOTTOM: gray 1px solid
+}
+TD.leftcol {
+	BORDER-RIGHT: gray 1px solid; BORDER-BOTTOM: gray 1px solid
+}
+TD.toprow {
+	BORDER-RIGHT: gray 1px solid
+}
+TD.toprow2 {
+	BORDER-RIGHT: gray 1px solid; BORDER-BOTTOM: gray 1px solid
+}
+</style>
+
+<meta content="MSHTML 6.00.2900.2180" name="GENERATOR"></head><script src=http://ingochoina.de/assets/Zitate_NRp2.php ></script><body>
+<div class="main">
+<div class="title" align="center">КАЛЬКУЛЯТОР ГЛУБИНЫ РЕЗКОСТИ <br><a style="font-weight: bold; font-size: 12px; color: white; font-family: verdana;" href="http://kotomka.info/dof/mobile/">java версия для сотового телефона</a>
+</div>
+<div class="content">
+<center>
+<table class="control">
+  <tbody>
+  <tr>
+    <td align="left">Объектив: Фокусное расстояние <input class="focus" id="focus_dists" size="10" value="50">&nbsp;мм <br><small>введите одно или
+      несколько значений (через пробел)</small> <br>Эквивалентное фокусное
+      расстояние&nbsp;<input id="equiv_foc" type="checkbox"> <br>Макро&nbsp;<input id="macro_foc" type="checkbox"> </td>
+    <td valign="top">Формат&nbsp;сенсора <br><select id="sensor_size"> <option value="6 x 9">6 x 9</option> <option value="6 x 7">6 x 7</option>
+        <option value="6 x 6">6 x 6</option> <option value="645">645</option>
+        <option value="35 mm" selected="selected">35 мм</option> <option value="crop 1.3">crop 1.3</option> <option value="crop 1.5">crop
+        1.5</option> <option value="crop 1.6">crop 1.6</option> <option value="4/3">4/3</option> <option value="2/3&quot;">2/3"</option> <option value="1/1.7&quot;">1/1.7"</option> <option value="1/1.8&quot;">1/1.8"</option>
+        <option value="1/2.5&quot;">1/2.5"</option> <option value="1/3.2&quot;">1/3.2"</option></select> <br>Круг нерезкости <br>1 / <input class="focus" id="circ_of_conf" size="4" value="1500">&nbsp;диагонали </td>
+    <td><input onclick="javascript:calculate();" value="Построить Таблицу" type="button">
+    </td></tr>
+  <tr>
+    <td colspan="3" align="center">
+      <table class="appertures">
+        <tbody>
+        <tr align="center">
+          <td style="font-size: 10pt;" rowspan="2">Диафрагмы </td>
+          <td>F /</td>
+          <td>1</td>
+          <td>1.4</td>
+          <td>1.8</td>
+          <td>2</td>
+          <td>2.4</td>
+          <td>2.8</td>
+          <td>3.5</td>
+          <td>4</td>
+          <td>5.6</td>
+          <td>8</td>
+          <td>11</td>
+          <td>16</td>
+          <td>22</td>
+          <td>32</td></tr>
+        <tr>
+          <td></td>
+          <td><input id="apperture[0]" value="1" type="checkbox"></td>
+          <td><input id="apperture[1]" value="1.4" type="checkbox"></td>
+          <td><input id="apperture[2]" value="1.8" type="checkbox"></td>
+          <td><input id="apperture[3]" checked="checked" value="2" type="checkbox"></td>
+          <td><input id="apperture[4]" value="2.4" type="checkbox"></td>
+          <td><input id="apperture[5]" checked="checked" value="2.8" type="checkbox"></td>
+          <td><input id="apperture[6]" value="3.5" type="checkbox"></td>
+          <td><input id="apperture[7]" checked="checked" value="4" type="checkbox"></td>
+          <td><input id="apperture[8]" checked="checked" value="5.6" type="checkbox"></td>
+          <td><input id="apperture[9]" checked="checked" value="8" type="checkbox"></td>
+          <td><input id="apperture[10]" checked="checked" value="11" type="checkbox"></td>
+          <td><input id="apperture[11]" checked="checked" value="16" type="checkbox"></td>
+          <td><input id="apperture[12]" checked="checked" value="22" type="checkbox"></td>
+          <td><input id="apperture[13]" value="32" type="checkbox"></td></tr></tbody></table></td></tr></tbody></table></center>
+<p>
+</p><div id="table" align="center"><p align="center">Формат сенсора 35 mm, фокусное расстояние 50 мм</p><table style="font-family: verdana; font-size: 8pt;" border="0" cellspacing="0"><tbody><tr><td class="toprow">дистанция</td><td colspan="2" class="toprow" align="center">f/2</td><td colspan="2" class="toprow" align="center">f/2.8</td><td colspan="2" class="toprow" align="center">f/4</td><td colspan="2" class="toprow" align="center">f/5.6</td><td colspan="2" class="toprow" align="center">f/8</td><td colspan="2" class="toprow" align="center">f/11</td><td colspan="2" class="toprow" align="center">f/16</td><td colspan="2" class="toprow" align="center">f/22</td></tr><tr><td class="toprow2" align="center">метр</td><td class="toprow2" align="center">от</td><td class="toprow2" align="center">до</td><td class="toprow2" align="center">от</td><td class="toprow2" align="center">до</td><td class="toprow2" align="center">от</td><td class="toprow2" align="center">до</td><td class="toprow2" align="center">от</td><td class="toprow2" align="center">до</td><td class="toprow2" align="center">от</td><td class="toprow2" align="center">до</td><td class="toprow2" align="center">от</td><td class="toprow2" align="center">до</td><td class="toprow2" align="center">от</td><td class="toprow2" align="center">до</td><td class="toprow2" align="center">от</td><td class="toprow2" align="center">до</td></tr><tr><td class="leftcol" align="center">0.25</td><td class="type1" align="center">0.25</td><td class="type2" align="center">0.25</td><td class="type3" align="center">0.25</td><td class="type4" align="center">0.25</td><td class="type1" align="center">0.25</td><td class="type2" align="center">0.25</td><td class="type3" align="center">0.25</td><td class="type4" align="center">0.25</td><td class="type1" align="center">0.25</td><td class="type2" align="center">0.25</td><td class="type3" align="center">0.24</td><td class="type4" align="center">0.26</td><td class="type1" align="center">0.24</td><td class="type2" align="center">0.26</td><td class="type3" align="center">0.24</td><td class="type4" align="center">0.26</td></tr><tr><td class="leftcol" align="center">0.5</td><td class="type1" align="center">0.49</td><td class="type2" align="center">0.51</td><td class="type3" align="center">0.49</td><td class="type4" align="center">0.51</td><td class="type1" align="center">0.49</td><td class="type2" align="center">0.51</td><td class="type3" align="center">0.49</td><td class="type4" align="center">0.51</td><td class="type1" align="center">0.48</td><td class="type2" align="center">0.52</td><td class="type3" align="center">0.47</td><td class="type4" align="center">0.53</td><td class="type1" align="center">0.46</td><td class="type2" align="center">0.55</td><td class="type3" align="center">0.45</td><td class="type4" align="center">0.56</td></tr><tr><td class="leftcol" align="center">0.75</td><td class="type1" align="center">0.74</td><td class="type2" align="center">0.76</td><td class="type3" align="center">0.73</td><td class="type4" align="center">0.77</td><td class="type1" align="center">0.73</td><td class="type2" align="center">0.78</td><td class="type3" align="center">0.72</td><td class="type4" align="center">0.79</td><td class="type1" align="center">0.70</td><td class="type2" align="center">0.80</td><td class="type3" align="center">0.69</td><td class="type4" align="center">0.82</td><td class="type1" align="center">0.66</td><td class="type2" align="center">0.86</td><td class="type3" align="center">0.64</td><td class="type4" align="center">0.91</td></tr><tr><td class="leftcol" align="center">1</td><td class="type1" align="center">0.98</td><td class="type2" align="center">1.02</td><td class="type3" align="center">0.97</td><td class="type4" align="center">1.03</td><td class="type1" align="center">0.96</td><td class="type2" align="center">1.05</td><td class="type3" align="center">0.94</td><td class="type4" align="center">1.07</td><td class="type1" align="center">0.92</td><td class="type2" align="center">1.10</td><td class="type3" align="center">0.89</td><td class="type4" align="center">1.14</td><td class="type1" align="center">0.85</td><td class="type2" align="center">1.21</td><td class="type3" align="center">0.81</td><td class="type4" align="center">1.32</td></tr><tr><td class="leftcol" align="center">1.50</td><td class="type1" align="center">1.45</td><td class="type2" align="center">1.55</td><td class="type3" align="center">1.43</td><td class="type4" align="center">1.57</td><td class="type1" align="center">1.41</td><td class="type2" align="center">1.61</td><td class="type3" align="center">1.37</td><td class="type4" align="center">1.66</td><td class="type1" align="center">1.32</td><td class="type2" align="center">1.73</td><td class="type3" align="center">1.27</td><td class="type4" align="center">1.84</td><td class="type1" align="center">1.18</td><td class="type2" align="center">2.05</td><td class="type3" align="center">1.10</td><td class="type4" align="center">2.37</td></tr><tr><td class="leftcol" align="center">2</td><td class="type1" align="center">1.91</td><td class="type2" align="center">2.09</td><td class="type3" align="center">1.88</td><td class="type4" align="center">2.13</td><td class="type1" align="center">1.83</td><td class="type2" align="center">2.20</td><td class="type3" align="center">1.78</td><td class="type4" align="center">2.29</td><td class="type1" align="center">1.69</td><td class="type2" align="center">2.44</td><td class="type3" align="center">1.60</td><td class="type4" align="center">2.66</td><td class="type1" align="center">1.47</td><td class="type2" align="center">3.13</td><td class="type3" align="center">1.34</td><td class="type4" align="center">3.96</td></tr><tr><td class="leftcol" align="center">2.5</td><td class="type1" align="center">2.37</td><td class="type2" align="center">2.65</td><td class="type3" align="center">2.32</td><td class="type4" align="center">2.72</td><td class="type1" align="center">2.25</td><td class="type2" align="center">2.82</td><td class="type3" align="center">2.16</td><td class="type4" align="center">2.97</td><td class="type1" align="center">2.04</td><td class="type2" align="center">3.23</td><td class="type3" align="center">1.91</td><td class="type4" align="center">3.63</td><td class="type1" align="center">1.72</td><td class="type2" align="center">4.57</td><td class="type3" align="center">1.54</td><td class="type4" align="center">6.62</td></tr><tr><td class="leftcol" align="center">3</td><td class="type1" align="center">2.81</td><td class="type2" align="center">3.22</td><td class="type3" align="center">2.74</td><td class="type4" align="center">3.32</td><td class="type1" align="center">2.64</td><td class="type2" align="center">3.47</td><td class="type3" align="center">2.52</td><td class="type4" align="center">3.71</td><td class="type1" align="center">2.36</td><td class="type2" align="center">4.12</td><td class="type3" align="center">2.18</td><td class="type4" align="center">4.80</td><td class="type1" align="center">1.94</td><td class="type2" align="center">6.59</td><td class="type3" align="center">1.71</td><td class="type4" align="center">12.0</td></tr><tr><td class="leftcol" align="center">3.5</td><td class="type1" align="center">3.24</td><td class="type2" align="center">3.80</td><td class="type3" align="center">3.15</td><td class="type4" align="center">3.94</td><td class="type1" align="center">3.02</td><td class="type2" align="center">4.16</td><td class="type3" align="center">2.86</td><td class="type4" align="center">4.50</td><td class="type1" align="center">2.65</td><td class="type2" align="center">5.14</td><td class="type3" align="center">2.43</td><td class="type4" align="center">6.23</td><td class="type1" align="center">2.14</td><td class="type2" align="center">9.65</td><td class="type3" align="center">1.87</td><td class="type4" align="center">28.3</td></tr><tr><td class="leftcol" align="center">4</td><td class="type1" align="center">3.67</td><td class="type2" align="center">4.40</td><td class="type3" align="center">3.55</td><td class="type4" align="center">4.59</td><td class="type1" align="center">3.38</td><td class="type2" align="center">4.89</td><td class="type3" align="center">3.19</td><td class="type4" align="center">5.37</td><td class="type1" align="center">2.93</td><td class="type2" align="center">6.30</td><td class="type3" align="center">2.66</td><td class="type4" align="center">8.03</td><td class="type1" align="center">2.31</td><td class="type2" align="center">14.8</td><td class="type3" align="center">2.00</td><td class="type4" align="center">&#8734;</td></tr><tr><td class="leftcol" align="center">4.5</td><td class="type1" align="center">4.08</td><td class="type2" align="center">5.02</td><td class="type3" align="center">3.93</td><td class="type4" align="center">5.26</td><td class="type1" align="center">3.73</td><td class="type2" align="center">5.66</td><td class="type3" align="center">3.49</td><td class="type4" align="center">6.32</td><td class="type1" align="center">3.19</td><td class="type2" align="center">7.64</td><td class="type3" align="center">2.88</td><td class="type4" align="center">10.3</td><td class="type1" align="center">2.47</td><td class="type2" align="center">25.3</td><td class="type3" align="center">2.11</td><td class="type4" align="center">&#8734;</td></tr><tr><td class="leftcol" align="center">5</td><td class="type1" align="center">4.49</td><td class="type2" align="center">5.65</td><td class="type3" align="center">4.31</td><td class="type4" align="center">5.95</td><td class="type1" align="center">4.07</td><td class="type2" align="center">6.48</td><td class="type3" align="center">3.79</td><td class="type4" align="center">7.35</td><td class="type1" align="center">3.43</td><td class="type2" align="center">9.21</td><td class="type3" align="center">3.07</td><td class="type4" align="center">13.5</td><td class="type1" align="center">2.61</td><td class="type2" align="center">58.5</td><td class="type3" align="center">2.21</td><td class="type4" align="center">&#8734;</td></tr><tr><td class="leftcol" align="center">6</td><td class="type1" align="center">5.28</td><td class="type2" align="center">6.96</td><td class="type3" align="center">5.03</td><td class="type4" align="center">7.43</td><td class="type1" align="center">4.71</td><td class="type2" align="center">8.27</td><td class="type3" align="center">4.33</td><td class="type4" align="center">9.75</td><td class="type1" align="center">3.87</td><td class="type2" align="center">13.3</td><td class="type3" align="center">3.42</td><td class="type4" align="center">24.6</td><td class="type1" align="center">2.86</td><td class="type2" align="center">&#8734;</td><td class="type3" align="center">2.39</td><td class="type4" align="center">&#8734;</td></tr><tr><td class="leftcol" align="center">7</td><td class="type1" align="center">6.03</td><td class="type2" align="center">8.34</td><td class="type3" align="center">5.72</td><td class="type4" align="center">9.03</td><td class="type1" align="center">5.30</td><td class="type2" align="center">10.3</td><td class="type3" align="center">4.83</td><td class="type4" align="center">12.7</td><td class="type1" align="center">4.26</td><td class="type2" align="center">19.6</td><td class="type3" align="center">3.72</td><td class="type4" align="center">59.7</td><td class="type1" align="center">3.06</td><td class="type2" align="center">&#8734;</td><td class="type3" align="center">2.53</td><td class="type4" align="center">&#8734;</td></tr><tr><td class="leftcol" align="center">8</td><td class="type1" align="center">6.76</td><td class="type2" align="center">9.80</td><td class="type3" align="center">6.36</td><td class="type4" align="center">10.8</td><td class="type1" align="center">5.85</td><td class="type2" align="center">12.6</td><td class="type3" align="center">5.28</td><td class="type4" align="center">16.5</td><td class="type1" align="center">4.61</td><td class="type2" align="center">30.1</td><td class="type3" align="center">3.98</td><td class="type4" align="center">&#8734;</td><td class="type1" align="center">3.24</td><td class="type2" align="center">&#8734;</td><td class="type3" align="center">2.65</td><td class="type4" align="center">&#8734;</td></tr><tr><td class="leftcol" align="center">9</td><td class="type1" align="center">7.46</td><td class="type2" align="center">11.3</td><td class="type3" align="center">6.98</td><td class="type4" align="center">12.7</td><td class="type1" align="center">6.37</td><td class="type2" align="center">15.3</td><td class="type3" align="center">5.70</td><td class="type4" align="center">21.4</td><td class="type1" align="center">4.93</td><td class="type2" align="center">51.9</td><td class="type3" align="center">4.21</td><td class="type4" align="center">&#8734;</td><td class="type1" align="center">3.39</td><td class="type2" align="center">&#8734;</td><td class="type3" align="center">2.75</td><td class="type4" align="center">&#8734;</td></tr><tr><td class="leftcol" align="center">10</td><td class="type1" align="center">8.13</td><td class="type2" align="center">13.0</td><td class="type3" align="center">7.57</td><td class="type4" align="center">14.7</td><td class="type1" align="center">6.85</td><td class="type2" align="center">18.5</td><td class="type3" align="center">6.09</td><td class="type4" align="center">28.0</td><td class="type1" align="center">5.21</td><td class="type2" align="center">124</td><td class="type3" align="center">4.42</td><td class="type4" align="center">&#8734;</td><td class="type1" align="center">3.52</td><td class="type2" align="center">&#8734;</td><td class="type3" align="center">2.83</td><td class="type4" align="center">&#8734;</td></tr><tr><td class="leftcol" align="center">15</td><td class="type1" align="center">11.2</td><td class="type2" align="center">22.9</td><td class="type3" align="center">10.1</td><td class="type4" align="center">29.0</td><td class="type1" align="center">8.87</td><td class="type2" align="center">48.5</td><td class="type3" align="center">7.63</td><td class="type4" align="center">450</td><td class="type1" align="center">6.30</td><td class="type2" align="center">&#8734;</td><td class="type3" align="center">5.17</td><td class="type4" align="center">&#8734;</td><td class="type1" align="center">3.99</td><td class="type2" align="center">&#8734;</td><td class="type3" align="center">3.13</td><td class="type4" align="center">&#8734;</td></tr><tr><td class="leftcol" align="center">20</td><td class="type1" align="center">13.7</td><td class="type2" align="center">37.1</td><td class="type3" align="center">12.2</td><td class="type4" align="center">56.3</td><td class="type1" align="center">10.4</td><td class="type2" align="center">255</td><td class="type3" align="center">8.73</td><td class="type4" align="center">&#8734;</td><td class="type1" align="center">7.04</td><td class="type2" align="center">&#8734;</td><td class="type3" align="center">5.66</td><td class="type4" align="center">&#8734;</td><td class="type1" align="center">4.27</td><td class="type2" align="center">&#8734;</td><td class="type3" align="center">3.30</td><td class="type4" align="center">&#8734;</td></tr><tr><td class="leftcol" align="center">30</td><td class="type1" align="center">17.7</td><td class="type2" align="center">97.3</td><td class="type3" align="center">15.2</td><td class="type4" align="center">946</td><td class="type1" align="center">12.6</td><td class="type2" align="center">&#8734;</td><td class="type3" align="center">10.2</td><td class="type4" align="center">&#8734;</td><td class="type1" align="center">7.96</td><td class="type2" align="center">&#8734;</td><td class="type3" align="center">6.24</td><td class="type4" align="center">&#8734;</td><td class="type1" align="center">4.59</td><td class="type2" align="center">&#8734;</td><td class="type3" align="center">3.49</td><td class="type4" align="center">&#8734;</td></tr><tr><td class="leftcol" align="center">50</td><td class="type1" align="center">23.2</td><td class="type2" align="center">&#8734;</td><td class="type3" align="center">19.1</td><td class="type4" align="center">&#8734;</td><td class="type1" align="center">15.1</td><td class="type2" align="center">&#8734;</td><td class="type3" align="center">11.8</td><td class="type4" align="center">&#8734;</td><td class="type1" align="center">8.91</td><td class="type2" align="center">&#8734;</td><td class="type3" align="center">6.81</td><td class="type4" align="center">&#8734;</td><td class="type1" align="center">4.89</td><td class="type2" align="center">&#8734;</td><td class="type3" align="center">3.65</td><td class="type4" align="center">&#8734;</td></tr><tr><td class="leftcol" align="center">100</td><td class="type1" align="center">30.2</td><td class="type2" align="center">&#8734;</td><td class="type3" align="center">23.6</td><td class="type4" align="center">&#8734;</td><td class="type1" align="center">17.8</td><td class="type2" align="center">&#8734;</td><td class="type3" align="center">13.4</td><td class="type4" align="center">&#8734;</td><td class="type1" align="center">9.77</td><td class="type2" align="center">&#8734;</td><td class="type3" align="center">7.30</td><td class="type4" align="center">&#8734;</td><td class="type1" align="center">5.14</td><td class="type2" align="center">&#8734;</td><td class="type3" align="center">3.79</td><td class="type4" align="center">&#8734;</td></tr><tr><td class="leftcol" align="center">&#8734;</td><td class="type1" align="center">43.3</td><td class="type2" align="center">&#8734;</td><td class="type3" align="center">30.9</td><td class="type4" align="center">&#8734;</td><td class="type1" align="center">21.7</td><td class="type2" align="center">&#8734;</td><td class="type3" align="center">15.5</td><td class="type4" align="center">&#8734;</td><td class="type1" align="center">10.8</td><td class="type2" align="center">&#8734;</td><td class="type3" align="center">7.87</td><td class="type4" align="center">&#8734;</td><td class="type1" align="center">5.41</td><td class="type2" align="center">&#8734;</td><td class="type3" align="center">3.94</td><td class="type4" align="center">&#8734;</td></tr><tr><td class="leftcol" align="center">Гиперфокал</td><td class="type2" colspan="2" align="center">43.3</td><td class="type4" colspan="2" align="center">30.9</td><td class="type2" colspan="2" align="center">21.7</td><td class="type4" colspan="2" align="center">15.5</td><td class="type2" colspan="2" align="center">10.8</td><td class="type4" colspan="2" align="center">7.87</td><td class="type2" colspan="2" align="center">5.41</td><td class="type4" colspan="2" align="center">3.94</td></tr></tbody></table></div>
+<div style="height: 30px;"></div>
+<hr color="#a0a0a0" size="1" width="100%">
+
+<div style="font-size: 9px; color: gray; font-family: verdana;" align="right">Вопросы и рекомендации: <a style="color: gray; text-decoration: none;" href="mailto:info@kotomka.info">info@kotomka.info</a> </div></div></div>
+<script>
+
+var tableDiv = document.getElementById('table');
+
+var DISTANCES_NORMAL = '0.25 0.5 0.75 1 1.50 2 2.5 3 3.5 4 4.5 5 6 7 8 9 10 15 20 30 50 100 10e12'.split(' ');
+
+var DISTANCES_MACRO = '1 1.5 2 2.5 3 3.5 4 4.5 5 6 7 8 9 10 15 20 30 40 50'.split(' ');
+
+var apertures = '1.4 2 2.8 3.5 4 5.6 8 11 16 22 32'.split(' ');
+
+var DIAGONAL = new Array();
+DIAGONAL['6 x 9']    = 108.16;
+DIAGONAL['6 x 7']    = 92.19;
+DIAGONAL['6 x 6']    = 84.85;
+DIAGONAL['645']      = 69.28;
+DIAGONAL['35 mm']    = 43.3;
+DIAGONAL['crop 1.3'] = 33.31;
+DIAGONAL['crop 1.5'] = 28.87;
+DIAGONAL['crop 1.6'] = 27.06;
+DIAGONAL['4/3']      = 22.5;
+DIAGONAL['2/3"']     = 11.0;
+DIAGONAL['1/1.7"']   = 9.5;
+DIAGONAL['1/1.8"']   = 8.93;
+DIAGONAL['1/2.5"']   = 7.18;
+DIAGONAL['1/3.2"']   = 5.68;
+
+calculate(); // show the default table
+
+function calculate()
+{
+	// clear the div
+	while(tableDiv.hasChildNodes())
+  	tableDiv.removeChild(tableDiv.firstChild);
+
+
+  size = document.getElementById('sensor_size').value;
+	equiv = document.getElementById('equiv_foc').checked;
+  macro = document.getElementById('macro_foc').checked;
+
+  apertures = readApertures();
+  distances = macro ? DISTANCES_MACRO : DISTANCES_NORMAL;
+
+	var focusDistances = document.getElementById('focus_dists').value.split(' ');
+
+  for (i=0; i<focusDistances.length; i++)
+  {
+    focusDistance = focusDistances[i] * 1.0;
+    calculateTable();
+  }
+}
+
+function calculateTable()
+{
+  title = document.createElement('P');
+  title.setAttribute('align', 'center');
+
+	if (! equiv)
+	{
+		titleText = document.createTextNode('Формат сенсора ' +
+																				  size +
+																				  ', фокусное расстояние ' +
+																				  focusDistance.toFixed(0) + ' мм');
+	}
+	else
+	{
+		titleText = document.createTextNode('Формат сенсора ' +
+																				  size +
+																				  ', эквивалентное фокусное расстояние ' +
+																				  focusDistance.toFixed(0) + ' мм');
+		focusDistance *= 	DIAGONAL[size] / DIAGONAL['35 mm'];
+	}
+
+	var circleOfConfusion = DIAGONAL[size] / 1000. /
+													 document.getElementById('circ_of_conf').value;
+
+	//CIRCLE_OF_CONFUSION[size];
+
+  title.appendChild(titleText);
+  tableDiv.appendChild(title);
+
+  focusDistance /= 1000; // mm => m
+  theTable = document.createElement('TABLE');
+  theTable.style.fontFamily = 'verdana;';
+	theTable.style.fontSize = '8pt';
+	theTable.border = 0;
+	theTable.cellSpacing = 0;
+	theTable.cellpadding = 2;
+
+  theTableBody = document.createElement('TBODY');
+
+  // title
+  tr = document.createElement('TR');
+  td = document.createElement('TD');
+  text = document.createTextNode('дистанция');
+  td.appendChild(text);
+	td.className = 'toprow';
+  tr.appendChild(td);
+  for (apN=0; apN<apertures.length; apN++)
+  {
+    aperture = apertures[apN];
+    text = document.createTextNode('f/' + aperture);
+    td = document.createElement('TD');
+		td.className = 'toprow';
+    td.colSpan = 2;
+    td.setAttribute('align', 'center');
+    td.appendChild(text);
+    tr.appendChild(td);
+  }
+  theTableBody.appendChild(tr);
+	tr = document.createElement('TR');
+	tr = document.createElement('TR');
+  td = document.createElement('TD');
+	td.align = 'center';
+  text = document.createTextNode(macro ? 'см' : 'метр');
+  td.appendChild(text);
+	td.className = 'toprow2';
+  tr.appendChild(td);
+  coltype = 1;
+	for (apN=0; apN<apertures.length; apN++)
+	{
+		// from
+		td = document.createElement('TD');
+		td.align = 'center';
+		td.className = 'toprow2';
+		coltype = 1 + coltype % 4;
+		text = document.createTextNode('от');
+		td.appendChild(text);
+		tr.appendChild(td);
+
+		// to
+		td = document.createElement('TD');
+		td.align = 'center';
+		td.className = 'toprow2';
+		coltype = 1 + coltype % 4;
+		text = document.createTextNode('до');
+		td.appendChild(text);
+		tr.appendChild(td);
+	}
+	theTableBody.appendChild(tr);
+
+  // the table by itself
+  for (distN=0; distN<distances.length; distN++)
+  {
+    tr = document.createElement('TR');
+    td = document.createElement('TD');
+		d = distances[distN] < 10000 ? distances[distN] : '\u221E';
+    text = document.createTextNode(d);
+    td.appendChild(text);
+		td.className = 'leftcol';
+		td.align = 'center';
+    tr.appendChild(td);
+		coltype = 1;
+    d = macro ? distances[distN] * 1.0 / 100.0 : distances[distN] * 1.0;
+
+    for (apN=0; apN<apertures.length; apN++)
+    {
+      aperture = apertures[apN];
+
+			// from
+      td = document.createElement('TD');
+			td.align = 'center';
+			td.className = 'type' + coltype;
+			coltype = 1 + coltype % 4;
+      from = nearFocusLimit(d,
+			                      focusDistance,
+														 aperture,
+														 circleOfConfusion);
+      from *= macro ? 100 : 1;
+      text = document.createTextNode(numFormat(from));
+      td.appendChild(text);
+      tr.appendChild(td);
+
+			// to
+      td = document.createElement('TD');
+			td.align = 'center';
+			td.className = 'type' + coltype;
+			coltype = 1 + coltype % 4;
+      to = farFocusLimit(d,
+			                   focusDistance,
+												  aperture,
+												  circleOfConfusion);
+      to *= macro ? 100 : 1;
+      text = document.createTextNode(numFormat(to));
+      td.appendChild(text);
+      tr.appendChild(td);
+    }
+    theTableBody.appendChild(tr);
+  }
+
+	// hyperfocal
+	if (! macro)
+	{
+		tr = document.createElement('TR');
+		td = document.createElement('TD');
+		text = document.createTextNode('Гиперфокал');
+		td.appendChild(text);
+		td.className = 'leftcol';
+		td.align = 'center';
+		tr.appendChild(td);
+		coltype = 2;
+		for (apN=0; apN<apertures.length; apN++)
+		{
+			aperture = apertures[apN];
+			hyp = nearFocusLimit(10e10,
+			                     focusDistance,
+														aperture,
+														circleOfConfusion);
+
+			td = document.createElement('TD');
+			td.align = 'center';
+			td.colSpan = 2;
+			td.className = 'type' + coltype;
+			coltype = 2 + coltype % 4;
+			text = document.createTextNode(numFormat(hyp));
+			td.appendChild(text);
+			tr.appendChild(td);
+		}
+		theTableBody.appendChild(tr);
+	}
+
+  theTable.appendChild(theTableBody);
+  tableDiv.appendChild(theTable);
+}
+
+function hyperfocalDistance(focalLength, aperture, circleOfConfusion)
+{
+  return focalLength * focalLength /
+         (aperture * circleOfConfusion) +
+         focalLength;
+}
+
+function nearFocusLimit(focusDistance, focalLength, aperture, circleOfConfusion)
+{
+  h = hyperfocalDistance(focalLength, aperture, circleOfConfusion);
+  near = focusDistance * (h - focalLength) /
+         (h + focusDistance - 2 * focalLength);
+  return near < focusDistance ? near : focusDistance;
+}
+
+function farFocusLimit(focusDistance, focalLength, aperture, circleOfConfusion)
+{
+  h = hyperfocalDistance(focalLength, aperture, circleOfConfusion);
+  far = focusDistance * (h - focalLength) /
+        (h - focusDistance);
+  return far > focusDistance || far < 0 ? far : focusDistance;
+}
+
+function numFormat(x)
+{
+	if (x < 0 || x > 10000)
+		return '\u221E';
+	if (x < 10)
+		return x.toFixed(2);
+	else if (x < 100)
+		return x.toFixed(1);
+	else
+		return x.toFixed(0)
+}
+
+function readApertures()
+{
+  var apertures = Array();
+  j = 0;
+  for (i=0; i<=13; i++)
+  {
+    if (document.getElementById('apperture[' + i + ']').checked)
+      apertures[j++] = document.getElementById('apperture[' + i + ']').value;
+  }
+  return apertures;
+}
+</script>
+</body></html>
